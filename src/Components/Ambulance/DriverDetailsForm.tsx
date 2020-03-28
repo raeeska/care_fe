@@ -61,16 +61,19 @@ export const DriverDetailsForm = (props: any) => {
       const value = form[key];
       switch (key) {
         case 'driverName1':
-        case 'driverName2':
           if (!value) {
             err[key] = "This field is required"
           }
           break;
         case 'cellNumber1':
-        case 'cellNumber2':
           if (!value) {
             err[key] = "This field is required"
           } else if (value && !phonePreg(form[key])) {
+            err[key] = "Please Enter 10/11 digit mobile number or landline as 0<std code><phone number>";
+          }
+          break;
+        case 'cellNumber2':
+          if (value && !phonePreg(form[key])) {
             err[key] = "Please Enter 10/11 digit mobile number or landline as 0<std code><phone number>";
           }
           break;
